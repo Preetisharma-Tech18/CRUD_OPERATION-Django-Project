@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<body>
+    <div class="container1">
+        <h1>Add Student</h1>
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+        <form action="{% url 'add_student' %}" method="post">
+            {% csrf_token %}
+            <label for="">Name:</label><br><br>
+            <input type="text" name="name" required><br><br>
+            <label for="">Branch:</label><br><br>
+            <select name="branch" id="branch" required>
+                <option value="CS">Computer Science</option>
+                <option value="EC">Electronics and Communication</option>
+                <option value="ME">Mechanical Engineering</option>
+                <option value="CE">Civil Engineering</option>
+            </select><br><br>
+            <label for="">Register Number:</label><br><br>
+            <input type="text" name="register_num" maxlength="10" required><br><br>
+            <button type="submit" id="new">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

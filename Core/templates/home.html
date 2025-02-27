@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<body>
+    <div class="container">
+        <h1>CRUD Operation Table</h1>
+        <table id="customers" border="1">
+            <thead>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Register Number</th>
+                <th colspan="2" id="mid">Action</th>
+            </thead>
+            <tbody>
+                {% for x in student_list %}
+                <tr>
+                    <td>{{x.name}}</td>
+                    <td>{{x.branch}}</td>
+                    <td>{{x.register_num}}</td>
+                    <td>
+                        <a href="{% url 'update_student' x.id %}"><button id="up">Update</button></a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_student' x.id %}" onclick="return confirm('Are you sure you want to delete this student?')"><button id="del">Delete</button></a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>Student not found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br><br>
+        <a href="{% url 'add_student' %}"><button id="new3">Add Student</button></a>
+    </div>
+</body>
+
+</html>
