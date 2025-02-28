@@ -9,6 +9,7 @@ COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+pip install --no-cache-dir gunicorn
 
 # Copy the entire project into the container
 COPY . .
