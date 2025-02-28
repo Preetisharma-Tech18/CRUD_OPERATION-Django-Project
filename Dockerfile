@@ -20,8 +20,5 @@ EXPOSE 8000
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SETTINGS_MODULE=CRUD_Project.settings
 
-# Run migrations and collect static files
-RUN python manage.py migrate && python manage.py collectstatic --noinput
-
 # Start Django application using Gunicorn
 CMD ["gunicorn", "CRUD_Project.wsgi:application", "--bind", "0.0.0.0:8000"]
